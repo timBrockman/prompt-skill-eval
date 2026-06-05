@@ -1,32 +1,34 @@
-# prompt-skill-eval
+# prompt-skill-lib
 
-Modular, testable prompt and agent skill library with **DeepEval** metrics, multi-model GitHub Actions CI, and full **Vercel `npx skills`** compatibility.
+**A great template for storing, versioning, testing, and refining prompts, skills, and instructions.**
+
+Modular, testable prompt and agent skill library with:
+- **DeepEval** metrics for rigorous evaluation
+- **Vercel `npx skills`** compatibility via `SKILL.md`
+- Multi-model GitHub Actions CI/CD
+- Versioned, isolated skills for easy reuse across projects
 
 ## Features
-- Per-skill directories with `SKILL.md` (Vercel discovery) + Python `deepeval.prompt.Prompt` registry
-- Rigorous pytest + DeepEval test suites with custom G-Eval metrics
-- Multi-model matrix testing (OpenAI, Anthropic, Gemini, etc.)
-- Automated CI with pass/fail gating on push/PR
-- Easy consumption: path imports, copy-paste, or `pip install -e`
+- **Storage & Versioning**: Git-tracked prompts in Python + SKILL.md metadata
+- **Testing**: Pytest + DeepEval with custom G-Eval metrics, threshold gating
+- **Refinement**: CI-driven regression detection, multi-model matrix (OpenAI, Anthropic, Gemini, etc.)
+- **Reusability**: Path import, pip install -e, or copy-paste. npx skills discovery
 
 ## Quick Start
-
 ```bash
-git clone https://github.com/timBrockman/prompt-skill-eval.git
+git clone https://github.com/TimBrockman/prompt-skill-eval.git
 cd prompt-skill-eval
 pip install -e .
 pip install -r requirements.txt
-
-# Run evaluations
-deepeval test run evals/test_sample_skill.py
+deepeval test run evals/
 ```
 
-## Adding a New Skill
-1. Copy `skills/sample_skill/` template.
-2. Update `SKILL.md` frontmatter and instructions.
-3. Implement prompts in `prompts.py` and tests in `evals/`.
-4. CI will validate automatically.
+Add new skills by copying `skills/sample_skill/` template.
 
-This library challenges ad-hoc prompt management by enforcing executable quality from day one.
+## Structure
+See detailed sections below.
 
-**License**: MIT
+## Contributing
+1. Add skill in `skills/<name>/`
+2. Write tests in `evals/`
+3. PR — CI validates automatically
