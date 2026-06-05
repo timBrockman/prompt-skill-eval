@@ -1,4 +1,4 @@
-# prompt-skill-lib
+# prompt-skill-eval
 
 **A great template for storing, versioning, testing, and refining prompts, skills, and instructions.**
 

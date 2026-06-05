@@ -1,0 +1,10 @@
+[project]
+name = "prompt-skill-eval"
+version = "0.1.0"
+description = "Prompt and skill library with evaluations"
+requires-python = ">=3.11"
+dependencies = ["deepeval"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["prompts*", "skills*"]
