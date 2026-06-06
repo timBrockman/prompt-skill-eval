@@ -1,34 +1,48 @@
-name: DeepEval CI
+name: DeepEval Prompt & Skill Library CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ staging ] #[ main, master ]
   pull_request:
-    branches: [ main ]
+    branches: [ staging ] #[ main, master ]
+  workflow_dispatch:
 
 jobs:
   evaluate:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        model: ["gpt-4o-mini", "claude-3-haiku-20240307"]
-        python-version: ["3.11"]
+        model: [ "gpt-4o-mini", "claude-3-haiku-20240307", "gemini-1.5-flash" ]
+        python-version: [ "3.11" ]
     env:
       OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+      GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-      - name: Setup Python
+      - name: Set up Python ${{ matrix.python-version }}
         uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
-      - name: Install
-        run: pip install -r requirements.txt
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
 
-      - name: Run Tests
+      - name: Run DeepEval Tests
         run: |
           export DEEPEVAL_MODEL=${{ matrix.model }}
-          deepeval test run evals/test_sample_skill.py --model ${{ matrix.model }}
+          deepeval test run evals/ --model ${{ matrix.model }}
+        env:
+          DEEPEVAL_MODEL: ${{ matrix.model }}
+
+      - name: Upload test results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: deepeval-results-${{ matrix.model }}
+          path: .deepeval/
