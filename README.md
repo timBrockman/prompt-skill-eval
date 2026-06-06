@@ -1,6 +1,6 @@
 # prompt-skill-eval
 
-**A great template for storing, versioning, testing, and refining prompts, skills, and instructions.**
+**A simple template for storing, versioning, testing, and refining prompts, skills, and instructions.**
 
 Modular, testable prompt and agent skill library with:
 - **DeepEval** metrics for rigorous evaluation
