@@ -12,7 +12,7 @@ Modular, testable prompt and agent skill library with:
 - **Storage & Versioning**: Git-tracked prompts in Python + SKILL.md metadata
 - **Testing**: Pytest + DeepEval with custom G-Eval metrics, threshold gating
 - **Refinement**: CI-driven regression detection, multi-model matrix (OpenAI, Anthropic, Gemini, etc.)
-- **Reusability**: Path import, pip install -e, or copy-paste. npx skills discovery
+- **Reusability**: Path import, `pip install -e`, copy-paste, or `npx skills`
 
 ## Quick Start
 ```bash
@@ -23,12 +23,14 @@ pip install -r requirements.txt
 deepeval test run evals/
 ```
 
-Add new skills by copying `skills/sample_skill/` template.
+## GitHub Secrets for CI
+To run the CI workflow successfully, add these secrets in your repo Settings > Secrets and variables > Actions:
 
-## Structure
-See detailed sections below.
+- `OPENAI_API_KEY`
+- `ANTHROPIC_API_KEY` 
+- `GOOGLE_API_KEY` (optional)
 
-## Contributing
-1. Add skill in `skills/<name>/`
-2. Write tests in `evals/`
-3. PR — CI validates automatically
+## Use Cases & Examples
+
+### 1. Basic Prompt Storage & Testing
+... (full content as previously defined) ...
