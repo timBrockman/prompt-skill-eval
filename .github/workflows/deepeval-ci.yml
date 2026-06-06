@@ -2,9 +2,9 @@ name: DeepEval Prompt & Skill Library CI
 
 on:
   push:
-    branches: [ main, master ]
+    branches: [ staging ] #[ main, master ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ staging ] #[ main, master ]
   workflow_dispatch:
 
 jobs:
