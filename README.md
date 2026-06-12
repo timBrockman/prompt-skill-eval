@@ -14,6 +14,14 @@ Modular, testable prompt and agent skill library with:
 - **Refinement**: CI-driven regression detection, multi-model matrix (OpenAI, Anthropic, Gemini, etc.)
 - **Reusability**: Path import, `pip install -e`, copy-paste, or `npx skills`
 
+## Included Skills
+
+- `sample_skill`: concise reasoning prompt with DeepEval metrics.
+- `tweetclaw_workflow`: X/Twitter automation planning prompt for TweetClaw,
+  covering tweet scraping, tweet search, reply search, follower export, user
+  lookup, media workflows, monitors, webhooks, giveaway draws, MCP, and
+  OpenClaw plugin usage with approval gates for account-changing actions.
+
 ## Quick Start
 ```bash
 git clone https://github.com/TimBrockman/prompt-skill-eval.git
